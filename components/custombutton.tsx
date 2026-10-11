@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
 
   title: {
     color: "#FFFFFF",
-    fontSize: scale(14),
+    fontSize: verticalScale(14),
     fontFamily: "Poppins-SemiBold",
   },
 });

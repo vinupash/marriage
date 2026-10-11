@@ -62,7 +62,7 @@ export default function Index() {
                 style={styles.footerButton}
                 styleGradient={{ borderRadius: scale(8) }}
                 title="Get Started"
-                onPress={() => router.replace}
+                onPress={() => router.replace("/signin")}
                 loading={false}
               />
             </Animated.View>
@@ -98,17 +98,17 @@ const styles = StyleSheet.create({
   contentWrapperTitle: {
     fontFamily: "Poppins-Bold",
     fontSize: scale(20),
-    lineHeight: scale(30),
+    // lineHeight: verticalScale(22),
     textAlign: "center",
-    marginBottom: scale(10),
-    color: "#000000",
+    marginBottom: verticalScale(10),
+    color: "#1A1A1A",
   },
   contentWrapperSubTitle: {
     fontFamily: "Poppins-SemiBold",
     fontSize: scale(14),
     lineHeight: scale(24),
     textAlign: "center",
-    color: "#000000",
+    color: "#1A1A1A",
   },
   footerButton: { marginBottom: scale(60) },
   content: {

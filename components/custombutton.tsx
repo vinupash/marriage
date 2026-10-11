@@ -74,7 +74,7 @@ export default function CustomButton({
       disabled={disabled || loading}
     >
       <LinearGradient
-        colors={["#0B6B2A", "#1E8E3E", "#34C759"]}
+        colors={["#e63157", "#e9496c", "#eb607e"]}
         start={{ x: 0, y: 0.5 }}
         end={{ x: 1, y: 0.5 }}
         style={[styles.gradient, styleGradient]}

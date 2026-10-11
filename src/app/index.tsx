@@ -26,6 +26,7 @@ export default function Index() {
     opacity: opacity.value,
     transform: [{ translateY: translateY.value }],
   }));
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container} edges={["left", "right"]}>
@@ -36,32 +37,36 @@ export default function Index() {
         >
           <View style={styles.contentWrapper}>
             <View style={styles.contentWrapperContent}>
-              <View
-                style={{
-                  width: scale(100),
-                  height: scale(100),
-                  borderWidth: 1,
-                  marginTop: verticalScale(90),
-                }}
-              ></View>
-              <View>
+              <Animated.View style={[styles.content, animatedStyle]}>
+                <View
+                  style={{
+                    width: scale(100),
+                    height: scale(100),
+                    borderWidth: 1,
+                    marginTop: verticalScale(60),
+                  }}
+                />
+              </Animated.View>
+              <Animated.View style={[styles.content, animatedStyle]}>
                 <Text style={styles.contentWrapperTitle}>
-                  तुमच्या उज्ज्वल उद्यासाठी योग्य जीवनसाथी शोधा
+                  तुमच्या आयुष्याचा नवा सोबती
                 </Text>
-              </View>
+                <Text style={styles.contentWrapperSubTitle}>
+                  मराठी समाजातील योग्य स्थळे शोधा आणि तुमच्या नव्या प्रवासाला
+                  सुरुवात करा.
+                </Text>
+              </Animated.View>
             </View>
-            <CustomButton
-              style={styles.footerButton}
-              styleGradient={{ borderRadius: scale(8) }}
-              title="Get Started"
-              onPress={() => router.replace}
-              loading={false}
-            ></CustomButton>
+            <Animated.View style={[styles.content, animatedStyle]}>
+              <CustomButton
+                style={styles.footerButton}
+                styleGradient={{ borderRadius: scale(8) }}
+                title="Get Started"
+                onPress={() => router.replace}
+                loading={false}
+              />
+            </Animated.View>
           </View>
-          {/*<Animated.View style={[styles.content, animatedStyle]}>
-            <Text style={styles.title}>Welcome!</Text>
-            <Text>Let's get started.</Text>
-          </Animated.View>*/}
         </ImageBackground>
       </SafeAreaView>
     </SafeAreaProvider>
@@ -91,14 +96,23 @@ const styles = StyleSheet.create({
     gap: scale(30),
   },
   contentWrapperTitle: {
-    fontFamily: "Poppins-SemiBold",
+    fontFamily: "Poppins-Bold",
     fontSize: scale(20),
     lineHeight: scale(30),
     textAlign: "center",
+    marginBottom: scale(10),
+    color: "#000000",
   },
-  footerButton: { marginBottom: scale(90) },
+  contentWrapperSubTitle: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: scale(14),
+    lineHeight: scale(24),
+    textAlign: "center",
+    color: "#000000",
+  },
+  footerButton: { marginBottom: scale(60) },
   content: {
-    alignItems: "center",
+    width: "100%",
   },
   title: {
     fontSize: 32,
@@ -107,20 +121,3 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
 });
-
-{
-  /*<View style={styles.container}>
-  <Text
-    style={{
-      fontFamily: "Poppins-Regular",
-      fontSize: scale(20),
-      lineHeight: scale(26),
-    }}
-  >
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum
-    necessitatibus minus aliquam sunt commodi quidem, distinctio cumque
-    dolorum laudantium sit cum provident eum delectus inventore velit fugit
-    totam quaerat sequi?
-  </Text>
-</View>*/
-}

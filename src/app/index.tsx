@@ -6,9 +6,12 @@ import Animated, {
   withTiming,
   withSpring,
 } from "react-native-reanimated";
-import { scale } from "react-native-size-matters";
+import { router } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { scale, verticalScale } from "react-native-size-matters";
+
 import { images } from "../../constants/images";
+import CustomButton from "../../components/custombutton";
 
 export default function Index() {
   const opacity = useSharedValue(0);
@@ -32,7 +35,28 @@ export default function Index() {
           style={styles.backgroundImage}
         >
           <View style={styles.contentWrapper}>
-            
+            <View style={styles.contentWrapperContent}>
+              <View
+                style={{
+                  width: scale(100),
+                  height: scale(100),
+                  borderWidth: 1,
+                  marginTop: verticalScale(90),
+                }}
+              ></View>
+              <View>
+                <Text style={styles.contentWrapperTitle}>
+                  तुमच्या उज्ज्वल उद्यासाठी योग्य जीवनसाथी शोधा
+                </Text>
+              </View>
+            </View>
+            <CustomButton
+              style={styles.footerButton}
+              styleGradient={{ borderRadius: scale(8) }}
+              title="Get Started"
+              onPress={() => router.replace}
+              loading={false}
+            ></CustomButton>
           </View>
           {/*<Animated.View style={[styles.content, animatedStyle]}>
             <Text style={styles.title}>Welcome!</Text>
@@ -58,8 +82,21 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
-    marginTop: scale(20),
+    paddingHorizontal: scale(20),
   },
+  contentWrapperContent: {
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    gap: scale(30),
+  },
+  contentWrapperTitle: {
+    fontFamily: "Poppins-SemiBold",
+    fontSize: scale(20),
+    lineHeight: scale(30),
+    textAlign: "center",
+  },
+  footerButton: { marginBottom: scale(90) },
   content: {
     alignItems: "center",
   },

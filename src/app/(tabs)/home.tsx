@@ -1,7 +1,7 @@
 import { Text, StyleSheet } from "react-native";
 
 const Home = () => {
-  return <Text>Sign In Screen</Text>;
+  return <Text>Home Screen</Text>;
 };
 
 export default Home;

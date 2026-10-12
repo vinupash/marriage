@@ -82,7 +82,7 @@ const SignIn = () => {
             <TouchableOpacity
               style={styles.dontHaveAccount}
               activeOpacity={0.8}
-              onPress={() => router.push}
+              onPress={() => router.push("/(auth)/signup")}
             >
               <Text style={styles.dontHaveAccountText}>
                 Don't have an account?{" "}
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: verticalScale(14),
-    lineHeight: verticalScale(24),
+    lineHeight: verticalScale(20),
     fontFamily: "Poppins-Regular",
     color: "#1A1A1A",
   },

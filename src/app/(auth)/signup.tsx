@@ -22,6 +22,7 @@ import { scale, verticalScale } from "react-native-size-matters";
 import { images } from "../../../constants/images";
 import CustomButton from "../../../components/custombutton";
 import CustomInput from "../../../components/custominput";
+import BackIcon from "../../../components/backicon";
 
 const SignUp = () => {
   const [checked, setChecked] = useState(false);
@@ -38,6 +39,7 @@ const SignUp = () => {
           keyboardDismissMode="on-drag"
         >
           <View style={styles.imageContainer}>
+            <BackIcon style={styles.backIcon} onPress={() => router.back()} />
             <ImageBackground
               source={images.SigninBG}
               resizeMode="cover"
@@ -47,9 +49,11 @@ const SignUp = () => {
 
           <View style={styles.content}>
             <View style={styles.textContainer}>
-              <Text style={styles.highlight}>Create an Account</Text>
+              <Text style={styles.highlight}>
+                नवीन खाते तयार करा (Create an Account)
+              </Text>
               <Text style={styles.title}>
-                Join us in keeping our city clean
+                तुमचा जीवनसाथी शोधण्याच्या प्रवासाला आजच सुरुवात करा.
               </Text>
             </View>
 
@@ -143,11 +147,18 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: "100%",
     height: verticalScale(250),
+    position: "relative",
   },
   background: {
     flex: 1,
     width: "100%",
     height: "100%",
+  },
+  backIcon: {
+    position: "absolute",
+    top: verticalScale(40),
+    left: verticalScale(20),
+    zIndex: 1,
   },
   content: {
     flexDirection: "column",
@@ -160,17 +171,17 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flexDirection: "column",
-    gap: verticalScale(3),
+    gap: verticalScale(5),
   },
   title: {
-    fontSize: verticalScale(14),
-    lineHeight: verticalScale(20),
+    fontSize: verticalScale(12),
+    lineHeight: verticalScale(18),
     fontFamily: "Poppins-Regular",
     color: "#1A1A1A",
   },
   highlight: {
-    fontSize: verticalScale(20),
-    lineHeight: verticalScale(30),
+    fontSize: verticalScale(16),
+    lineHeight: verticalScale(22),
     fontFamily: "Poppins-SemiBold",
     color: "#e63157",
   },

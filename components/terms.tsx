@@ -2,13 +2,12 @@ import { View, Text, StyleSheet } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
 
 interface TermsProps {
-  icon: React.ReactNode;
+  isLast: boolean;
   title: string;
-  description: string;
-  isLast?: boolean;
+  descriptions: string[];
 }
 
-const Terms = ({ isLast, icon, title, description }: TermsProps) => {
+const Terms = ({ isLast, title, descriptions }: TermsProps) => {
   return (
     <View
       style={[
@@ -19,12 +18,25 @@ const Terms = ({ isLast, icon, title, description }: TermsProps) => {
         },
       ]}
     >
-      <View style={styles.termsIcon}>{icon}</View>
+      {/*<View style={styles.termsIcon}>{icon}</View>*/}
 
       <View style={styles.termsContentWrapper}>
         <Text style={styles.termsTitle}>{title}</Text>
+        {descriptions.map((description, index) => (
+          <View key={index} style={styles.termsDescriptionWrapper}>
+            <View
+              style={{
+                width: scale(5),
+                height: scale(5),
+                borderRadius: scale(2.5),
+                backgroundColor: "#e63157",
+                marginTop: scale(5),
+              }}
+            />
 
-        <Text style={styles.termsDescription}>{description}</Text>
+            <Text style={styles.termsDescription}>{description}</Text>
+          </View>
+        ))}
       </View>
     </View>
   );
@@ -34,19 +46,19 @@ export default Terms;
 
 const styles = StyleSheet.create({
   termsWrapper: {
-    flexDirection: "row",
-    gap: scale(10),
-    paddingVertical: scale(10),
-    // marginBottom: scale(10),
+    // flexDirection: "row",
+    // gap: scale(10),
+    paddingBottom: scale(10),
+    marginBottom: scale(10),
     borderBottomWidth: 1,
     borderBottomColor: "#E5E7EB",
     width: "100%",
   },
 
   termsIcon: {
-    width: scale(40),
-    height: scale(40),
-    borderRadius: scale(20),
+    width: scale(30),
+    height: scale(30),
+    borderRadius: scale(15),
     backgroundColor: "#e63157",
     justifyContent: "center",
     alignItems: "center",
@@ -62,9 +74,17 @@ const styles = StyleSheet.create({
   termsTitle: {
     fontSize: verticalScale(14),
     fontFamily: "Poppins-SemiBold",
-    color: "#1A1A1A",
+    color: "#e63157",
   },
-
+  termsDescriptionWrapper: {
+    flexDirection: "row",
+    gap: scale(6),
+    paddingVertical: verticalScale(2),
+    // marginBottom: scale(10),
+    // borderBottomWidth: 1,
+    // borderBottomColor: "#E5E7EB",
+    width: "100%",
+  },
   termsDescription: {
     fontSize: verticalScale(12),
     fontFamily: "Poppins-Regular",

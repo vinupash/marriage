@@ -46,8 +46,12 @@ const SignIn = () => {
 
           <View style={styles.content}>
             <View style={styles.textContainer}>
-              <Text style={styles.highlight}>Welcome Back!</Text>
-              <Text style={styles.title}>Sign in to continue</Text>
+              <Text style={styles.highlight}>
+                पुन्हा स्वागत आहे! (Welcome Back!)
+              </Text>
+              <Text style={styles.title}>
+                तुमच्या योग्य जीवनसाथीच्या शोधात पुढे जाण्यासाठी लॉगिन करा.
+              </Text>
             </View>
 
             <CustomInput
@@ -66,8 +70,7 @@ const SignIn = () => {
             <TouchableOpacity
               style={styles.forgotPassword}
               activeOpacity={0.8}
-              // onPress={() => router.push("/(auth)/forgotpassword")}
-              onPress={() => router.push}
+              onPress={() => router.push("/(auth)/forgotpassword")}
             >
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
             </TouchableOpacity>
@@ -138,17 +141,17 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flexDirection: "column",
-    gap: verticalScale(3),
+    gap: verticalScale(5),
   },
   title: {
-    fontSize: verticalScale(14),
-    lineHeight: verticalScale(20),
+    fontSize: verticalScale(12),
+    lineHeight: verticalScale(18),
     fontFamily: "Poppins-Regular",
     color: "#1A1A1A",
   },
   highlight: {
-    fontSize: verticalScale(20),
-    lineHeight: verticalScale(30),
+    fontSize: verticalScale(16),
+    lineHeight: verticalScale(22),
     fontFamily: "Poppins-SemiBold",
     color: "#e63157",
   },

@@ -8,6 +8,7 @@ import { scale, verticalScale } from "react-native-size-matters";
 import Header from "../../../components/header";
 import { mockProfiles } from "../../../mocks/profil_data";
 import ProfileCard from "../../../components/profilecard";
+import Advertising from "../../../components/advertising";
 
 const Home = () => {
   const [containerHeight, setContainerHeight] = useState(0);
@@ -19,23 +20,7 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <Header />
-      {/*<View
-        style={{
-          width: "100%",
-          paddingTop: verticalScale(5),
-          paddingHorizontal: scale(15),
-        }}
-      >
-        <View
-          style={{
-            borderWidth: 1,
-            padding: verticalScale(5),
-            borderRadius: verticalScale(5),
-          }}
-        >
-          <Text>cool</Text>
-        </View>
-      </View>*/}
+      <Advertising />
       <View
         style={[
           styles.profileImageWrapper,
@@ -54,6 +39,7 @@ const Home = () => {
                 name={item.name}
                 image={item.image}
                 height={profileHeight}
+                age={item.age}
               />
             )}
             ListEmptyComponent={

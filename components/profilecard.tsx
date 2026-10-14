@@ -7,9 +7,10 @@ interface ProfileCardProps {
   name: string;
   image: ImageSourcePropType;
   height: number;
+  age: number;
 }
 
-const ProfileCard = ({ name, image, height }: ProfileCardProps) => {
+const ProfileCard = ({ name, image, height, age }: ProfileCardProps) => {
   return (
     <View style={[styles.profileCard, { height }]}>
       {image ? (
@@ -45,7 +46,13 @@ const ProfileCard = ({ name, image, height }: ProfileCardProps) => {
         locations={[0, 1]}
         style={styles.profileOverlay}
       >
-        <Text style={styles.profileName}>{name}</Text>
+        <View style={styles.profileDetailsWrapper}>
+          <View style={styles.profileNameWrapper}>
+            <Text style={styles.profileName}>{name},</Text>
+            <Text style={styles.profileName}>{age}</Text>
+          </View>
+          <View></View>
+        </View>
       </LinearGradient>
     </View>
   );
@@ -74,47 +81,53 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    height: verticalScale(150),
+    // height: verticalScale(150),
     justifyContent: "flex-end",
     paddingHorizontal: scale(16),
-    paddingBottom: verticalScale(20),
+    paddingVertical: verticalScale(20),
   },
   profileName: {
     color: "#FFFFFF",
-    fontSize: scale(24),
+    fontSize: scale(20),
     fontFamily: "Poppins-SemiBold",
   },
+  profileNameWrapper: { flexDirection: "row", gap: verticalScale(5) },
   emptyContainer: {
     flex: 1,
     flexDirection: "column",
-    gap: verticalScale(20),
+    gap: verticalScale(10),
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: scale(24),
   },
   emptyTitle: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: verticalScale(16),
     color: "#ffffff",
     textAlign: "center",
+    fontFamily: "Poppins-SemiBold",
   },
   emptySubtitle: {
-    fontSize: 14,
+    fontSize: verticalScale(12),
     color: "#ffffff",
     textAlign: "center",
     marginTop: 8,
+    fontFamily: "Poppins-Regular",
   },
   emptyTitleMarathi: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: verticalScale(16),
     color: "#ffffff",
     textAlign: "center",
-    marginTop: 20,
+    fontFamily: "Poppins-SemiBold",
   },
   emptySubtitleMarathi: {
-    fontSize: 14,
+    fontSize: verticalScale(12),
     color: "#ffffff",
     textAlign: "center",
     marginTop: 8,
+    fontFamily: "Poppins-Regular",
+  },
+  profileDetailsWrapper: {
+    flexDirection: "column",
+    gap: verticalScale(10),
   },
 });

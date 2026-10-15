@@ -9,18 +9,19 @@ import Header from "../../../components/header";
 import { mockProfiles } from "../../../mocks/profil_data";
 import ProfileCard from "../../../components/profilecard";
 import Advertising from "../../../components/advertising";
+import UploadProfile from "../../../components/uploadprofile";
 
 const Home = () => {
   const [containerHeight, setContainerHeight] = useState(0);
 
-  const verticalPadding = verticalScale(15);
+  const verticalPadding = verticalScale(10);
   const profileGap = verticalScale(12);
   const profileHeight = Math.max(0, containerHeight - verticalPadding * 2);
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <Header />
-      <Advertising />
+      <UploadProfile onPress={() => router.push("/profile")} />
       <View
         style={[
           styles.profileImageWrapper,

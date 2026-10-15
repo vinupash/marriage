@@ -42,7 +42,7 @@ const ProfileCard = ({ name, image, height, age }: ProfileCardProps) => {
       )}
 
       <LinearGradient
-        colors={["transparent", "rgba(0,0,0,0.85)"]}
+        colors={["transparent", "rgba(0,0,0,0.98)"]}
         locations={[0, 1]}
         style={styles.profileOverlay}
       >
@@ -51,7 +51,22 @@ const ProfileCard = ({ name, image, height, age }: ProfileCardProps) => {
             <Text style={styles.profileName}>{name},</Text>
             <Text style={styles.profileName}>{age}</Text>
           </View>
-          <View></View>
+          <View style={{ flexDirection: "row", gap: verticalScale(5) }}>
+            <Text style={styles.profileText}>Professional:</Text>
+            <Text style={styles.profileText}>Professional</Text>
+          </View>
+          <View style={{ flexDirection: "row", gap: verticalScale(5) }}>
+            <Text style={styles.profileText}>Location:</Text>
+            <Text style={styles.profileText}>Location</Text>
+          </View>
+          <View style={{ flexDirection: "row", gap: verticalScale(5) }}>
+            <Text style={styles.profileText}>DOB:</Text>
+            <Text style={styles.profileText}>DOB</Text>
+          </View>
+          <View style={{ flexDirection: "row", gap: verticalScale(5) }}>
+            <Text style={styles.profileText}>Height:</Text>
+            <Text style={styles.profileText}>Height</Text>
+          </View>
         </View>
       </LinearGradient>
     </View>
@@ -83,8 +98,9 @@ const styles = StyleSheet.create({
     right: 0,
     // height: verticalScale(150),
     justifyContent: "flex-end",
-    paddingHorizontal: scale(16),
-    paddingVertical: verticalScale(20),
+    paddingHorizontal: scale(20),
+    paddingTop: verticalScale(30),
+    paddingBottom: verticalScale(10),
   },
   profileName: {
     color: "#FFFFFF",
@@ -128,6 +144,11 @@ const styles = StyleSheet.create({
   },
   profileDetailsWrapper: {
     flexDirection: "column",
-    gap: verticalScale(10),
+    gap: verticalScale(1),
+  },
+  profileText: {
+    fontFamily: "Poppins-Regular",
+    color: "#ffffff",
+    fontSize: verticalScale(12),
   },
 });

@@ -17,7 +17,7 @@ const BackIcon = ({ onPress, style }: BackButtonProps) => {
   return (
     <View style={[styles.backIconShadow, style]}>
       <TouchableOpacity
-        activeOpacity={0.8}
+        activeOpacity={0.9}
         style={styles.backIcon}
         // onPress={() => router.back()}
         onPress={onPress}

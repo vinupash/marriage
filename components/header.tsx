@@ -62,7 +62,7 @@ const Header = () => {
         style={styles.notificationWrapper}
         // onPress={() => router.push("/notification/notification")}
       >
-        <FontAwesome5 name="power-off" size={14} color="#ffffff" />
+        <FontAwesome5 name="power-off" size={scale(12)} color="#ffffff" />
       </TouchableOpacity>
     </View>
   );
@@ -78,15 +78,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: scale(15),
     paddingVertical: scale(8),
     backgroundColor: "#ffffff",
-    // borderWidth: 1,
   },
-
   profileImage: {
     width: scale(40),
     height: scale(40),
     borderRadius: scale(20),
   },
-
   profileName: {
     width: scale(40),
     height: scale(40),
@@ -95,14 +92,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
   profileNameText: {
     fontFamily: "Poppins-SemiBold",
     fontSize: verticalScale(14),
     lineHeight: verticalScale(18),
     color: "#ffffff",
   },
-
   notificationWrapper: {
     width: scale(30),
     height: scale(30),
@@ -111,7 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#e63157",
   },
-
   profileNameWrapper: {
     flexDirection: "column",
     gap: scale(0),

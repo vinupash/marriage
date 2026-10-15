@@ -163,11 +163,8 @@ const styles = StyleSheet.create({
   content: {
     flexDirection: "column",
     gap: verticalScale(20),
-    marginTop: -verticalScale(10),
-    borderTopLeftRadius: verticalScale(15),
-    borderTopRightRadius: verticalScale(15),
     backgroundColor: "#FFFFFF",
-    padding: verticalScale(20),
+    paddingHorizontal: verticalScale(20),
   },
   textContainer: {
     flexDirection: "column",

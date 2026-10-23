@@ -15,28 +15,40 @@ const ScreenNavbar = ({
 }: ScreenNavbarProps) => {
   return (
     <View style={styles.screenHeaderWrapper}>
-      <View
-        style={{
-          flexDirection: "row",
-          gap: scale(10),
-          alignItems: "center",
-        }}
-      >
-        <TouchableOpacity
-          activeOpacity={0.9}
-          style={styles.backIcon}
-          onPress={onPress}
-        >
-          <Feather name="arrow-left" size={scale(20)} color="#e63157" />
-        </TouchableOpacity>
-        <View style={{ flexDirection: "column" }}>
-          <Text style={styles.screenTitle}>{screenTitle}</Text>
-          <Text style={styles.screenSubTitle}>{screenSubTitle}</Text>
+      <View style={styles.headerRow}>
+        <View style={styles.textWrapper}>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: scale(10),
+              alignItems: "center",
+            }}
+          >
+            <TouchableOpacity
+              activeOpacity={0.9}
+              style={styles.backIcon}
+              onPress={onPress}
+            >
+              <Feather name="arrow-left" size={scale(20)} color="#e63157" />
+            </TouchableOpacity>
+            <Text style={styles.headerText}>
+              <View style={{ flexDirection: "column" }}>
+                <Text style={styles.screenTitle}>{screenTitle}</Text>
+                {screenSubTitle && (
+                  <Text style={styles.screenSubTitle}>{screenSubTitle}</Text>
+                )}
+              </View>
+            </Text>
+          </View>
         </View>
+
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={styles.notificationWrapper}
+        >
+          <FontAwesome5 name="power-off" size={scale(12)} color="#ffffff" />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity activeOpacity={0.8} style={styles.notificationWrapper}>
-        <FontAwesome5 name="power-off" size={scale(12)} color="#ffffff" />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -45,13 +57,28 @@ export default ScreenNavbar;
 
 const styles = StyleSheet.create({
   screenHeaderWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
     paddingHorizontal: scale(15),
     paddingVertical: scale(8),
     backgroundColor: "#ffffff",
   },
+
+  headerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+  },
+
+  textWrapper: {
+    flexGrow: 1,
+    flexShrink: 1,
+    minWidth: 0,
+    marginRight: scale(10),
+  },
+
+  headerText: {
+    flexShrink: 1,
+  },
+
   notificationWrapper: {
     width: scale(30),
     height: scale(30),
@@ -59,8 +86,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#e63157",
+    flexGrow: 0,
+    flexShrink: 0,
   },
-  backIconShadow: {},
 
   backIcon: {
     borderRadius: scale(20),

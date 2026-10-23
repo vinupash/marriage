@@ -6,12 +6,19 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { scale, verticalScale } from "react-native-size-matters";
 import Header from "../../../components/header";
 import BackIcon from "../../../components/backicon";
+import ScreenNavbar from "../../../components/screennavbar";
 
 const Profile = () => {
   return (
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       {/*<Header />*/}
-      <BackIcon style={styles.backIcon} onPress={() => router.back()} />
+      <ScreenNavbar
+        screenTitle={"My Profile"}
+        screenSubTitle={
+          "View and manage your personal and matrimonial details."
+        }
+        onPress={() => router.back()}
+      />
     </SafeAreaView>
   );
 };

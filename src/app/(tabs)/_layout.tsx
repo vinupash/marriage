@@ -67,7 +67,7 @@ const TabsLayout = () => {
               <Text
                 style={[styles.tabBarTitle, focused && { color: "#e63157" }]}
               >
-                Profile
+                My Profile
               </Text>
             </View>
           ),

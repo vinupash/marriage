@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import Feather from "@expo/vector-icons/Feather";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -19,12 +21,21 @@ export default function RootLayout() {
     "Poppins-Regular": require("../../assets/fonts/Poppins-Regular.ttf"),
     "Poppins-SemiBold": require("../../assets/fonts/Poppins-SemiBold.ttf"),
     "Poppins-SemiBoldItalic": require("../../assets/fonts/Poppins-SemiBoldItalic.ttf"),
+    ...Feather.font,
+    ...FontAwesome5.font,
   });
 
   useEffect(() => {
-    if (loaded || error) SplashScreen.hideAsync();
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+
+    if (error) {
+      console.error("Font loading error:", error);
+    }
   }, [loaded, error]);
 
   if (!loaded && !error) return null;
+
   return <Stack screenOptions={{ headerShown: false }} />;
 }

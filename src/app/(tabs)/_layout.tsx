@@ -41,7 +41,7 @@ const TabsLayout = () => {
             <View style={styles.tabBarWrapper}>
               <Ionicons
                 name="home"
-                size={verticalScale(20)}
+                size={verticalScale(14)}
                 color={focused ? "#e63157" : "#999999"}
               />
               <Text
@@ -61,7 +61,7 @@ const TabsLayout = () => {
             <View style={styles.tabBarWrapper}>
               <Fontisto
                 name="person"
-                size={verticalScale(20)}
+                size={verticalScale(14)}
                 color={focused ? "#e63157" : "#999999"}
               />
               <Text
@@ -81,7 +81,7 @@ const TabsLayout = () => {
             <View style={styles.tabBarWrapper}>
               <FontAwesome5
                 name="book"
-                size={verticalScale(20)}
+                size={verticalScale(14)}
                 color={focused ? "#e63157" : "#999999"}
               />
               <Text
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     width: scale(60),
   },
   tabBarTitle: {
-    fontSize: scale(8),
+    fontSize: scale(10),
     fontFamily: "Poppins-Regular",
     color: "#999999",
     marginTop: scale(2),

@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
+import { Feather, FontAwesome5 } from "@expo/vector-icons";
 
 interface AboutSection {
   title: string;

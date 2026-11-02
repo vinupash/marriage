@@ -8,12 +8,15 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Button,
 } from "react-native";
 
 import { router } from "expo-router";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { scale, verticalScale } from "react-native-size-matters";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import Header from "../../../components/header";
 import BackIcon from "../../../components/backicon";
@@ -21,6 +24,24 @@ import ScreenNavbar from "../../../components/screennavbar";
 import CustomInput from "../../../components/custominput";
 
 const Profile = () => {
+  const [date, setDate] = useState(new Date());
+  const [isPickerVisible, setPickerVisible] = useState(false);
+  const [mode, setMode] = useState<"date" | "time">("date");
+
+  const showPicker = (currentMode: "date" | "time") => {
+    setMode(currentMode);
+    setPickerVisible(true);
+  };
+
+  const hidePicker = () => {
+    setPickerVisible(false);
+  };
+
+  const handleConfirm = (selectedDate: Date) => {
+    setDate(selectedDate);
+    hidePicker();
+  };
+
   return (
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       {/*<Header />*/}
@@ -105,6 +126,22 @@ const Profile = () => {
               type="text"
               placeholder="Enter Last Name"
               keyboardType="email-address"
+            />
+            <Button title="Select Date" onPress={() => showPicker("date")} />
+
+            <Button title="Select Time" onPress={() => showPicker("time")} />
+
+            <Text style={{ marginTop: 20 }}>
+              Selected: {date.toLocaleString()}
+            </Text>
+
+            <DateTimePickerModal
+              isVisible={isPickerVisible}
+              mode={mode}
+              date={date}
+              is24Hour
+              onConfirm={handleConfirm}
+              onCancel={hidePicker}
             />
           </View>
         </ScrollView>

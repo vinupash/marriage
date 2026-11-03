@@ -29,6 +29,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import BackIcon from "../../../components/backicon";
 import { termsData } from "../../../mocks/terms_data";
+import { CommonStyles } from "../../../constants/theme";
 
 const TermsCondition = () => {
   const [checked, setChecked] = useState(false);
@@ -139,9 +140,6 @@ const styles = StyleSheet.create({
     color: "#1A1A1A",
   },
   highlight: {
-    fontSize: verticalScale(16),
-    lineHeight: verticalScale(22),
-    fontFamily: "Poppins-SemiBold",
-    color: "#e63157",
+    ...CommonStyles.sectionTitle,
   },
 });

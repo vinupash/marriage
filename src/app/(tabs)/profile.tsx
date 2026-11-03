@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Button,
+  Pressable,
 } from "react-native";
 
 import { router } from "expo-router";
@@ -22,29 +23,72 @@ import Header from "../../../components/header";
 import BackIcon from "../../../components/backicon";
 import ScreenNavbar from "../../../components/screennavbar";
 import CustomInput from "../../../components/custominput";
+import { CommonStyles } from "../../../constants/theme";
+
+type Gender = "Male" | "Female";
 
 const Profile = () => {
-  const [date, setDate] = useState(new Date());
-  const [isPickerVisible, setPickerVisible] = useState(false);
-  const [mode, setMode] = useState<"date" | "time">("date");
+  const [gender, setGender] = useState<Gender>("Male");
+  const [dob, setDob] = useState<Date | null>(null);
+  const [time, setTime] = useState<Date | null>(null);
 
-  const showPicker = (currentMode: "date" | "time") => {
-    setMode(currentMode);
-    setPickerVisible(true);
+  const [isDatePickerVisible, setDatePickerVisible] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisible] = useState(false);
+
+  // Calculate latest eligible date of birth
+  const getMaximumDOB = () => {
+    const today = new Date();
+    const minimumAge = gender === "Male" ? 21 : 18;
+
+    return new Date(
+      today.getFullYear() - minimumAge,
+      today.getMonth(),
+      today.getDate(),
+    );
   };
 
-  const hidePicker = () => {
-    setPickerVisible(false);
+  const maximumDOB = getMaximumDOB();
+
+  // Format date without time
+  const formatDate = (value: Date) =>
+    value.toLocaleDateString("en-IN", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+
+  // Format time without seconds
+  const formatTime = (value: Date) =>
+    value.toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+  // Update gender and validate existing DOB
+  const handleGenderChange = (selectedGender: Gender) => {
+    setGender(selectedGender);
+
+    if (dob) {
+      const today = new Date();
+      const minimumAge = selectedGender === "Male" ? 21 : 18;
+
+      const maxDate = new Date(
+        today.getFullYear() - minimumAge,
+        today.getMonth(),
+        today.getDate(),
+      );
+
+      if (dob > maxDate) {
+        setDob(null);
+      }
+    }
   };
 
-  const handleConfirm = (selectedDate: Date) => {
-    setDate(selectedDate);
-    hidePicker();
-  };
+  // console.log("gender dateils->", gender);
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
-      {/*<Header />*/}
       <ScreenNavbar
         screenTitle={"My Profile"}
         screenSubTitle={
@@ -62,88 +106,7 @@ const Profile = () => {
           contentContainerStyle={styles.scrollContent}
           keyboardDismissMode="on-drag"
         >
-          <View style={styles.content}>
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-                gap: verticalScale(10),
-              }}
-            >
-              <View
-                style={{
-                  width: verticalScale(140),
-                  height: verticalScale(140),
-                  borderWidth: 1,
-                }}
-              ></View>
-              <TouchableOpacity
-                style={{
-                  width: scale(40),
-                  height: scale(40),
-                  borderRadius: scale(20),
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#e63157",
-
-                  // ios
-                  shadowColor: "#000000",
-                  shadowOffset: {
-                    width: 0,
-                    height: scale(5),
-                  },
-                  shadowOpacity: 0.2,
-                  shadowRadius: scale(4),
-
-                  // android
-                  elevation: 5,
-                }}
-              >
-                <FontAwesome name="camera" size={scale(15)} color="#ffffff" />
-              </TouchableOpacity>
-            </View>
-            <CustomInput
-              title="First Name"
-              type="text"
-              placeholder="Enter First Name"
-              keyboardType="email-address"
-            />
-            <CustomInput
-              title="Father Name"
-              type="text"
-              placeholder="Enter Father Name"
-              keyboardType="email-address"
-            />
-            <CustomInput
-              title="Mother Name"
-              type="text"
-              placeholder="Enter Mother Name"
-              keyboardType="email-address"
-            />
-            <CustomInput
-              title="Last Name"
-              type="text"
-              placeholder="Enter Last Name"
-              keyboardType="email-address"
-            />
-            <Button title="Select Date" onPress={() => showPicker("date")} />
-
-            <Button title="Select Time" onPress={() => showPicker("time")} />
-
-            <Text style={{ marginTop: 20 }}>
-              Selected: {date.toLocaleString()}
-            </Text>
-
-            <DateTimePickerModal
-              isVisible={isPickerVisible}
-              mode={mode}
-              date={date}
-              is24Hour
-              onConfirm={handleConfirm}
-              onCancel={hidePicker}
-            />
-          </View>
+          <View style={styles.content}></View>
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -171,5 +134,28 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     paddingVertical: verticalScale(10),
     paddingHorizontal: verticalScale(20),
+  },
+  label: {
+    fontSize: scale(13),
+    color: "#333",
+    marginBottom: verticalScale(6),
+  },
+  input: {
+    height: verticalScale(48),
+    borderWidth: 1,
+    borderColor: "#D9D9D9",
+    borderRadius: verticalScale(10),
+    paddingHorizontal: scale(12),
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: scale(14),
+    color: "#333",
+  },
+  placeholder: {
+    color: "#999999",
+  },
+  title: {
+    ...CommonStyles.sectionTitle,
   },
 });

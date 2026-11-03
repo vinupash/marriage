@@ -17,6 +17,7 @@ interface CustomInputProps {
   placeholder: string;
   type?: "text" | "password";
   keyboardType?: KeyboardTypeOptions;
+  editable?: boolean;
 }
 
 const CustomInput = ({
@@ -24,6 +25,7 @@ const CustomInput = ({
   placeholder,
   type = "text",
   keyboardType = "default",
+  editable = true,
 }: CustomInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = type === "password";
@@ -38,6 +40,7 @@ const CustomInput = ({
           secureTextEntry={isPassword && !showPassword}
           placeholderTextColor="#999999"
           keyboardType={keyboardType}
+          editable={editable}
         />
         {isPassword && (
           <TouchableOpacity
@@ -63,29 +66,30 @@ const CustomInput = ({
 export default CustomInput;
 
 const styles = StyleSheet.create({
-  inputContainer: { flexDirection: "column", gap: verticalScale(8) },
+  inputContainer: { flexDirection: "column", gap: verticalScale(1), flex: 1 },
 
   title: {
-    fontFamily: "Poppins-Reguler",
+    fontFamily: "Poppins-SemiBold",
     color: "#1A1A1A",
-    fontSize: verticalScale(14),
+    fontSize: verticalScale(12),
   },
 
   inputWrapper: {
-    height: verticalScale(48),
+    height: verticalScale(40),
     borderWidth: 1,
     borderColor: "#D9D9D9",
     borderRadius: verticalScale(10),
     flexDirection: "row",
     alignItems: "center",
+    paddingTop: verticalScale(2),
   },
 
   input: {
     flex: 1,
     height: "100%",
     paddingHorizontal: verticalScale(12),
-    fontFamily: "Poppins-Reguler",
-    fontSize: verticalScale(14),
+    fontFamily: "Poppins-Regular",
+    fontSize: verticalScale(12),
     color: "#1A1A1A",
   },
 

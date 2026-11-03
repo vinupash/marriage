@@ -22,10 +22,11 @@ import { scale, verticalScale } from "react-native-size-matters";
 import { images } from "../../../constants/images";
 import CustomButton from "../../../components/custombutton";
 import CustomInput from "../../../components/custominput";
+import { CommonStyles } from "../../../constants/theme";
 
 const SignIn = () => {
   return (
-    <SafeAreaView style={styles.container} edges={["left", "right"]}>
+    <SafeAreaView style={styles.container} edges={["left", "right", "top"]}>
       <KeyboardAvoidingView
         style={styles.keyboardAvoidingView}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -50,52 +51,53 @@ const SignIn = () => {
                 पुन्हा स्वागत आहे! (Welcome Back!)
               </Text>
               <Text style={styles.title}>
-                तुमच्या योग्य जीवनसाथीच्या शोधात पुढे जाण्यासाठी लॉगिन करा.
+                तुमच्या आयुष्याच्या सुंदर सहप्रवासासाठी योग्य जीवनसाथी शोधण्याचा
+                प्रवास सुरू ठेवा.
               </Text>
             </View>
 
             <CustomInput
-              title="Email Address"
+              title="Mobile No.1 (मोबाइल नंबर १)"
               type="text"
-              placeholder="Enter Email Address"
-              keyboardType="email-address"
+              placeholder="Mobile No.1 (मोबाइल नंबर १)"
+              keyboardType="number-pad"
             />
 
-            <CustomInput
+            {/*<CustomInput
               title="Password"
               type="password"
               placeholder="Enter Password"
-            />
+            />*/}
 
-            <TouchableOpacity
+            {/*<TouchableOpacity
               style={styles.forgotPassword}
               activeOpacity={0.8}
               onPress={() => router.push("/(auth)/forgotpassword")}
             >
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>*/}
 
             <CustomButton
-              title="Sign In"
+              title="Log In"
               // style={styles.footerButton}
               styleGradient={{ borderRadius: verticalScale(10) }}
-              onPress={() => router.push("/(tabs)/home")}
+              onPress={() => router.push("/verifyotp")}
             />
 
             <TouchableOpacity
               style={styles.dontHaveAccount}
               activeOpacity={0.8}
-              onPress={() => router.push("/(auth)/signup")}
+              onPress={() => router.push("/(auth)/registration")}
             >
               <Text style={styles.dontHaveAccountText}>
-                Don't have an account?{" "}
+                New to Runanubandh?{" "}
                 <Text
                   style={{
                     color: "#e63157",
                     fontFamily: "Poppins-SemiBold",
                   }}
                 >
-                  Sign Up
+                  Create an Account
                 </Text>
               </Text>
             </TouchableOpacity>
@@ -110,9 +112,8 @@ export default SignIn;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    ...CommonStyles.container,
     width: "100%",
-    backgroundColor: "#FFFFFF",
   },
   keyboardAvoidingView: {
     flex: 1,
@@ -147,10 +148,7 @@ const styles = StyleSheet.create({
     color: "#1A1A1A",
   },
   highlight: {
-    fontSize: verticalScale(16),
-    lineHeight: verticalScale(22),
-    fontFamily: "Poppins-SemiBold",
-    color: "#e63157",
+    ...CommonStyles.sectionTitle,
   },
   forgotPassword: {
     alignItems: "flex-end",
@@ -167,5 +165,6 @@ const styles = StyleSheet.create({
     fontSize: verticalScale(14),
     fontFamily: "Poppins-Regular",
     color: "#1A1A1A",
+    textAlign: "center",
   },
 });

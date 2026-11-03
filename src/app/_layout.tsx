@@ -4,6 +4,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -21,6 +22,7 @@ export default function RootLayout() {
     "Poppins-Regular": require("../../assets/fonts/Poppins-Regular.ttf"),
     "Poppins-SemiBold": require("../../assets/fonts/Poppins-SemiBold.ttf"),
     "Poppins-SemiBoldItalic": require("../../assets/fonts/Poppins-SemiBoldItalic.ttf"),
+    ...Ionicons.font,
     ...Feather.font,
     ...FontAwesome5.font,
   });

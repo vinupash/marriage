@@ -64,7 +64,7 @@ const verifyOTP = () => {
           <View style={styles.content}>
             <View style={styles.textContainer}>
               <Text style={styles.highlight}>
-                OTP सत्यापित करा (Verify OTP)
+                Verify OTP (OTP सत्यापित करा)
               </Text>
               <Text style={styles.title}>
                 तुमच्या नोंदणीकृत ईमेलवर पाठवलेला 6 अंकी OTP टाका.
@@ -111,7 +111,7 @@ const verifyOTP = () => {
               title="Verify OTP"
               // style={styles.footerButton}
               styleGradient={{ borderRadius: verticalScale(10) }}
-              onPress={() => router.push("/newpassword")}
+              onPress={() => router.push("/home")}
             />
           </View>
         </ScrollView>

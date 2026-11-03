@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
 import { Feather, FontAwesome5 } from "@expo/vector-icons";
+import { CommonStyles } from "../constants/theme";
 
 interface AboutSection {
   title: string;
@@ -88,9 +89,6 @@ const styles = StyleSheet.create({
 
   pointText: {
     flex: 1,
-    fontSize: verticalScale(12),
-    fontFamily: "Poppins-Regular",
-    color: "#1A1A1A",
-    lineHeight: verticalScale(18),
+    ...CommonStyles.descriptionContent,
   },
 });

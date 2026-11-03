@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
+import { CommonStyles } from "../constants/theme";
 
 interface TermsProps {
   isLast: boolean;
@@ -86,10 +87,6 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   termsDescription: {
-    fontSize: verticalScale(12),
-    fontFamily: "Poppins-Regular",
-    color: "#1A1A1A",
-    lineHeight: verticalScale(18),
-    flexShrink: 1,
+    ...CommonStyles.descriptionContent,
   },
 });

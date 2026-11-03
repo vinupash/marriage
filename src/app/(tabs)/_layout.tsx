@@ -1,10 +1,7 @@
 import { Tabs } from "expo-router";
 import { View, Text, StyleSheet } from "react-native";
 import { scale, verticalScale } from "react-native-size-matters";
-import { Feather } from "@expo/vector-icons";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-import Fontisto from "@expo/vector-icons/Fontisto";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const TabsLayout = () => {
@@ -59,11 +56,12 @@ const TabsLayout = () => {
           title: "Profile",
           tabBarIcon: ({ color, size, focused }) => (
             <View style={styles.tabBarWrapper}>
-              <Fontisto
-                name="person"
+              <FontAwesome5
+                name="user"
                 size={verticalScale(14)}
                 color={focused ? "#e63157" : "#999999"}
               />
+
               <Text
                 style={[styles.tabBarTitle, focused && { color: "#e63157" }]}
               >
@@ -106,7 +104,7 @@ const styles = StyleSheet.create({
     width: scale(60),
   },
   tabBarTitle: {
-    fontSize: scale(10),
+    fontSize: scale(8),
     fontFamily: "Poppins-Regular",
     color: "#999999",
     marginTop: scale(2),

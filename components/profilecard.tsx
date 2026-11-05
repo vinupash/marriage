@@ -1,4 +1,10 @@
-import { Text, View, StyleSheet, ImageSourcePropType } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  ImageSourcePropType,
+  TouchableOpacity,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { scale, verticalScale } from "react-native-size-matters";
 import { Image } from "expo-image";
@@ -8,11 +14,22 @@ interface ProfileCardProps {
   image: ImageSourcePropType;
   height: number;
   age: number;
+  onPress: () => void;
 }
 
-const ProfileCard = ({ name, image, height, age }: ProfileCardProps) => {
+const ProfileCard = ({
+  name,
+  image,
+  height,
+  age,
+  onPress,
+}: ProfileCardProps) => {
   return (
-    <View style={[styles.profileCard, { height }]}>
+    <TouchableOpacity
+      activeOpacity={0.9}
+      onPress={onPress}
+      style={[styles.profileCard, { height }]}
+    >
       {image ? (
         <Image
           source={image}
@@ -69,7 +86,7 @@ const ProfileCard = ({ name, image, height, age }: ProfileCardProps) => {
           </View>
         </View>
       </LinearGradient>
-    </View>
+    </TouchableOpacity>
   );
 };
 

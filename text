@@ -1,0 +1,27 @@
+const [dob, setDob] = useState<Date | null>(null);
+  const [time, setTime] = useState<Date | null>(null);
+  const [isDatePickerVisible, setDatePickerVisible] = useState(false);
+  const [isTimePickerVisible, setTimePickerVisible] = useState(false);
+  const [address, setAddress] = useState("");
+
+  // select state
+  const [name, setName] = useState<string | null>(null);
+  const [fatherName, setFatherName] = useState<string | null>(null);
+  const [motherName, setMotherName] = useState<string | null>(null);
+  const [lastName, setLastName] = useState<string | null>(null);
+  const [maritalStatus, setMaritalStatus] = useState<string | null>(null);
+  const [height, setHeight] = useState<string | null>(null);
+  const [bloodGroup, setBloodGroup] = useState<string | null>(null);
+  const [complexion, setComplexion] = useState<string | null>(null);
+  const [education, setEducation] = useState<string | null>(null);
+  const [occupation, setOccupation] = useState<string | null>(null);
+  const [motherToungue, setMotherToungue] = useState<string | null>("Marathi");
+  const [religion, setReligion] = useState<string | null>("Hindu");
+  const [cast, setCast] = useState<string | null>("Sutar");
+  const [subCast, setSubCast] = useState<string | null>(null);
+  const [country, setCountry] = useState<string | null>("India");
+  const [star, setStar] = useState<string | null>(null);
+  const [moonsign, setMoonsign] = useState<string | null>(null);
+  const [gan, setGan] = useState<string | null>(null);
+  const [nadi, setNadi] = useState<string | null>(null);
+  const [manglik, setManglik] = useState<string | null>(null);

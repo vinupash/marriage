@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <Header />
-      <UploadProfile onPress={() => router.push("/profile")} />
+      {/*<UploadProfile onPress={() => router.push("/profile")} />*/}
       <View
         style={[
           styles.profileImageWrapper,
@@ -41,6 +41,18 @@ const Home = () => {
                 image={item.image}
                 height={profileHeight}
                 age={item.age}
+                onPress={() =>
+                  router.push({
+                    pathname: "/profile/profileview",
+                    params: { id: item.id },
+                  })
+                }
+                // onPress={() =>
+                //         router.push({
+                //           pathname: "/profile/[id]",
+                //           params: { id: item.id },
+                //         })
+                //       }
               />
             )}
             ListEmptyComponent={

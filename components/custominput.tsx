@@ -18,6 +18,8 @@ interface CustomInputProps {
   type?: "text" | "password";
   keyboardType?: KeyboardTypeOptions;
   editable?: boolean;
+  // value: string;
+  // onChangeText: (text: string) => void;
 }
 
 const CustomInput = ({
@@ -26,6 +28,8 @@ const CustomInput = ({
   type = "text",
   keyboardType = "default",
   editable = true,
+  // value,
+  // onChangeText,
 }: CustomInputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const isPassword = type === "password";
@@ -35,12 +39,19 @@ const CustomInput = ({
       <Text style={styles.title}>{title}</Text>
       <View style={styles.inputWrapper}>
         <TextInput
-          style={styles.input}
+          style={[
+            styles.input,
+            {
+              backgroundColor: editable ? "#FFFFFF" : "#F0F0F0",
+            },
+          ]}
           placeholder={placeholder}
           secureTextEntry={isPassword && !showPassword}
           placeholderTextColor="#999999"
           keyboardType={keyboardType}
           editable={editable}
+          // value={value}
+          // onChangeText={onChangeText}
         />
         {isPassword && (
           <TouchableOpacity
@@ -67,13 +78,11 @@ export default CustomInput;
 
 const styles = StyleSheet.create({
   inputContainer: { flexDirection: "column", gap: verticalScale(1), flex: 1 },
-
   title: {
     fontFamily: "Poppins-SemiBold",
     color: "#1A1A1A",
     fontSize: verticalScale(12),
   },
-
   inputWrapper: {
     height: verticalScale(40),
     borderWidth: 1,
@@ -81,18 +90,17 @@ const styles = StyleSheet.create({
     borderRadius: verticalScale(10),
     flexDirection: "row",
     alignItems: "center",
-    paddingTop: verticalScale(2),
+    overflow: "hidden",
   },
-
   input: {
     flex: 1,
     height: "100%",
     paddingHorizontal: verticalScale(12),
     fontFamily: "Poppins-Regular",
     fontSize: verticalScale(12),
+    lineHeight: verticalScale(20),
     color: "#1A1A1A",
   },
-
   showButton: {
     paddingHorizontal: verticalScale(12),
   },

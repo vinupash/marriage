@@ -23,6 +23,7 @@ import BackIcon from "../../../components/backicon";
 import { CommonStyles } from "../../../constants/theme";
 import SelectDropdown from "../../../components/selectdropdown";
 import { mockSelects } from "../../../mocks/select_data";
+import CustomTextArea from "../../../components/customtextarea";
 
 type Gender = "Male" | "Female";
 const Registration = () => {
@@ -32,6 +33,7 @@ const Registration = () => {
   const [time, setTime] = useState<Date | null>(null);
   const [isDatePickerVisible, setDatePickerVisible] = useState(false);
   const [isTimePickerVisible, setTimePickerVisible] = useState(false);
+  const [address, setAddress] = useState<string>("");
 
   // Calculate latest eligible date of birth
   const getMaximumDOB = () => {
@@ -133,9 +135,6 @@ const Registration = () => {
 
             <View
               style={{
-                paddingBottom: scale(10),
-                borderBottomWidth: 1,
-                borderBottomColor: "#E5E7EB",
                 flexDirection: "column",
                 gap: verticalScale(10),
               }}
@@ -167,6 +166,12 @@ const Registration = () => {
                 keyboardType="default"
               />
               <CustomInput
+                title="Last Name (आडनांव)"
+                type="text"
+                placeholder="Last Name (आडनांव)"
+                keyboardType="default"
+              />
+              <CustomInput
                 title="Mobile No.1 (मोबाइल नंबर १)"
                 type="text"
                 placeholder="Mobile No.1 (मोबाइल नंबर १)"
@@ -183,6 +188,12 @@ const Registration = () => {
                 type="text"
                 placeholder="Email ID (ई मेल आईडी)"
                 keyboardType="email-address"
+              />
+              <CustomInput
+                title="Native Place (मूळ ठिकाण)"
+                type="text"
+                placeholder="Native Place (मूळ ठिकाण)"
+                keyboardType="default"
               />
               <View style={{ flexDirection: "column", gap: verticalScale(1) }}>
                 <Text
@@ -480,6 +491,13 @@ const Registration = () => {
                 label="Country Living (कोणत्या देशात)"
                 search={false}
               />
+              <CustomTextArea
+                title="Address"
+                placeholder="Enter your full address"
+                value={address}
+                setValue={setAddress}
+                editable={true}
+              />
               <CustomInput
                 title="Aadhar Number (आधार क्रमांक)"
                 type="text"
@@ -520,9 +538,13 @@ const Registration = () => {
 
             <View
               style={{
-                paddingBottom: scale(10),
                 borderBottomWidth: 1,
                 borderBottomColor: "#E5E7EB",
+              }}
+            />
+
+            <View
+              style={{
                 flexDirection: "column",
                 gap: verticalScale(10),
               }}
@@ -541,6 +563,12 @@ const Registration = () => {
                 <View style={styles.square} />
               </View>
             </View>
+            <View
+              style={{
+                borderBottomWidth: 1,
+                borderBottomColor: "#E5E7EB",
+              }}
+            />
             <View
               style={{
                 flexDirection: "column",

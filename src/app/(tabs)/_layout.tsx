@@ -91,6 +91,26 @@ const TabsLayout = () => {
           ),
         }}
       />
+      {/*<Tabs.Screen
+        name="community"
+        options={{
+          title: "Community",
+          tabBarIcon: ({ color, size, focused }) => (
+            <View style={styles.tabBarWrapper}>
+              <FontAwesome5
+                name="users"
+                size={verticalScale(14)}
+                color={focused ? "#e63157" : "#999999"}
+              />
+              <Text
+                style={[styles.tabBarTitle, focused && { color: "#e63157" }]}
+              >
+                Community
+              </Text>
+            </View>
+          ),
+        }}
+      />*/}
     </Tabs>
   );
 };

@@ -919,6 +919,18 @@ const Profile = () => {
                   style={styles.square}
                 />
               </View>
+              <View
+                style={{
+                  width: "100%",
+                  alignItems: "center",
+                }}
+              >
+                <EditButton
+                  title="Edit"
+                  styleGradient={{ borderRadius: verticalScale(8) }}
+                  onPress={() => router.push("/(tabs)/home")}
+                />
+              </View>
             </View>
             <View
               style={{

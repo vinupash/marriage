@@ -26,8 +26,8 @@ const tabs = [
   { id: "basic", title: "Basic Details" },
   { id: "family", title: "Family Details" },
   { id: "professional", title: "Professional Details" },
-  { id: "horoscope", title: "Horoscope" },
   { id: "contact", title: "Contact Details" },
+  { id: "horoscope", title: "Horoscope" },
 ];
 
 const profileImages = [
@@ -122,10 +122,18 @@ const ProfileView = () => {
   );
 
   // Detail row
+  // const renderDetail = (label: string, value: string) => (
+  //   <View style={styles.detailRow}>
+  //     <Text style={styles.detailLabel}>{label}</Text>
+  //     <Text style={styles.detailValue}>{value || "-"}</Text>
+  //   </View>
+  // );
+
   const renderDetail = (label: string, value: string) => (
     <View style={styles.detailRow}>
       <Text style={styles.detailLabel}>{label}</Text>
-      <Text style={styles.detailValue}>{value || "-"}</Text>
+      <Text style={styles.detailSeparator}>:</Text>
+      <Text style={styles.detailValue}>{value?.trim() || "No Data Found"}</Text>
     </View>
   );
 
@@ -288,6 +296,21 @@ const ProfileView = () => {
 
         <View style={styles.separator} />
 
+        {/* Contact Information */}
+        <View
+          onLayout={handleSectionLayout("contact")}
+          style={[styles.section, styles.lastSection]}
+        >
+          {renderSectionTitle("Contact Details")}
+
+          {renderDetail("Mobile Number", "-")}
+          {renderDetail("Alternate Number", "-")}
+          {renderDetail("Email Address", "-")}
+          {renderDetail("Address", "-")}
+        </View>
+
+        <View style={styles.separator} />
+
         {/* Horoscope */}
         <View
           onLayout={handleSectionLayout("horoscope")}
@@ -304,21 +327,6 @@ const ProfileView = () => {
           {renderDetail("Nadi (नाडी)", "-")}
           {renderDetail("Horoscope Match? (कुंडली जुळली पाहिजे ?)", "-")}
           {renderDetail("Are You Manglik? (आपण मांगलिक आहात?)", "-")}
-        </View>
-
-        <View style={styles.separator} />
-
-        {/* Contact Information */}
-        <View
-          onLayout={handleSectionLayout("contact")}
-          style={[styles.section, styles.lastSection]}
-        >
-          {renderSectionTitle("Contact Details")}
-
-          {renderDetail("Mobile Number", "-")}
-          {renderDetail("Alternate Number", "-")}
-          {renderDetail("Email Address", "-")}
-          {renderDetail("Address", "-")}
         </View>
       </Animated.ScrollView>
     </SafeAreaView>
@@ -458,6 +466,13 @@ const styles = StyleSheet.create({
     color: "#1A1A1A",
   },
 
+  detailSeparator: {
+    fontFamily: "Poppins-Medium",
+    fontSize: verticalScale(11),
+    color: "#999999",
+    marginHorizontal: scale(5),
+  },
+
   detailValue: {
     flex: 1,
     fontFamily: "Poppins-Regular",
@@ -467,7 +482,7 @@ const styles = StyleSheet.create({
 
   separator: {
     height: 1,
-    backgroundColor: "#EEEEEE",
+    backgroundColor: "#E5E7EB",
     marginHorizontal: verticalScale(16),
   },
 

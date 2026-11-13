@@ -28,7 +28,16 @@ const AboutWrapper = ({ section, isLast }: AboutWrapperProps) => {
       <Text style={styles.sectionTitle}>{section.title}</Text>
 
       {section.description && (
-        <Text style={styles.sectionDescription}>{section.description}</Text>
+        <Text
+          style={[
+            styles.sectionDescription,
+            section.points && section.points.length > 0
+              ? styles.descriptionWithPoints
+              : undefined,
+          ]}
+        >
+          {section.description}
+        </Text>
       )}
 
       {section.points && (
@@ -86,9 +95,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#e63157",
     marginTop: verticalScale(6),
   },
-
   pointText: {
     flex: 1,
     ...CommonStyles.descriptionContent,
+  },
+  descriptionWithPoints: {
+    marginBottom: verticalScale(10),
   },
 });

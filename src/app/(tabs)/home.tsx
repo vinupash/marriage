@@ -10,6 +10,7 @@ import { mockProfiles } from "../../../mocks/profil_data";
 import ProfileCard from "../../../components/profilecard";
 import Advertising from "../../../components/advertising";
 import UploadProfile from "../../../components/uploadprofile";
+import Welcome from "../../../components/welcome";
 
 const Home = () => {
   const [containerHeight, setContainerHeight] = useState(0);
@@ -22,6 +23,7 @@ const Home = () => {
     <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
       <Header />
       {/*<UploadProfile onPress={() => router.push("/profile")} />*/}
+      {/*<Welcome />*/}
       <View
         style={[
           styles.profileImageWrapper,
@@ -85,6 +87,7 @@ const Home = () => {
           />
         )}
       </View>
+      {/*<Welcome />*/}
     </SafeAreaView>
   );
 };

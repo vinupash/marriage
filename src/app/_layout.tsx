@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { Stack } from "expo-router";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Feather from "@expo/vector-icons/Feather";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import {
+  TourGuideProvider,
+  TourGuideOverlay,
+} from "@wrack/react-native-tour-guide";
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -25,6 +31,7 @@ export default function RootLayout() {
     ...Ionicons.font,
     ...Feather.font,
     ...FontAwesome5.font,
+    ...FontAwesome.font,
   });
 
   useEffect(() => {
@@ -39,5 +46,12 @@ export default function RootLayout() {
 
   if (!loaded && !error) return null;
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <TourGuideProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+        <TourGuideOverlay />
+      </TourGuideProvider>
+    </GestureHandlerRootView>
+  );
 }

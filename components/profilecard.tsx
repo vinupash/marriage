@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#808080",
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 0,
   },
   profileImage: {
     width: "100%",
